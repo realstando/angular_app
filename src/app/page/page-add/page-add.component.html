@@ -1,0 +1,100 @@
+{{ pageForm.pristine | json }}
+{{ pageForm.dirty | json }}
+{{ pageForm.valid | json }}
+{{ pageForm.invalid | json }}
+{{ pageForm.value | json }}
+
+<div *ngIf="successMsg !== ''" class="alert alert-succes">
+  {{ successMsg }}
+</div>
+
+<form #pageForm="ngForm" (ngSubmit)="AddPage(pageForm)">
+  <div class="form-group">
+    <input
+      required
+      class="form-control"
+      type="text"
+      name="pageType"
+      [(ngModel)]="page.pageType"
+      placeholder="Page Type"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      #pagestr1="ngModel"
+      required
+      minlength="10"
+      maxlength="100"
+      pattern="^[a-z"
+      class="form-control"
+      type="text"
+      name="pageStr1"
+      [(ngModel)]="page.pageStr1"
+      placeholder="PageStr1"
+    />
+    <div class="alert alert-danger" *ngIf="pagestr1.errors?.['minlength']">
+      This should be minimum 10 characters
+    </div>
+    <div class="alert alert-danger" *ngIf="pagestr1.dirty && pagestr1.errors?.['required']">
+        This should be minimum 10 characters
+      </div>
+  </div>
+  <div class="form-group">
+    <input
+      required
+      class="form-control"
+      type="number"
+      name="pageNum"
+      [(ngModel)]="page.pageNum"
+      placeholder="PageNum"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      required
+      email
+      class="form-control"
+      type="text"
+      name="pageStr2"
+      [(ngModel)]="page.pageStr2"
+      placeholder="PageStr2"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      required
+      class="form-control"
+      type="datetime"
+      name="pageTime1"
+      [(ngModel)]="page.pageTime1"
+      placeholder="pageTime1"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      required
+      class="form-control"
+      type="datetime"
+      name="pageTime2"
+      [(ngModel)]="page.pageTime2"
+      placeholder="pageTime2"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      min="1"
+      max="5"
+      required
+      class="form-control"
+      type="number"
+      name="deci"
+      [(ngModel)]="page.deci"
+      placeholder="deci"
+    />
+  </div>
+  <div class="form-group">
+    <button [disabled]="pageForm.invalid" class="btn btn-primary" type="submit">
+      Submit
+    </button>
+  </div>
+</form>

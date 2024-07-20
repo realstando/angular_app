@@ -1,0 +1,37 @@
+<!-- <h1>{{name}}</h1> -->
+<app-header></app-header>
+<!-- <app-header></app-header>
+<app-header></app-header> -->
+<!-- {{pages$ | async | json}} -->
+<div [hidden]="bool">
+    <div [ngStyle]="{'color': pages.testNum1 ? 'green' : 'red'}" [innerText]="abc"></div>
+</div>
+
+<!-- {{ pages.testNum1 ?? 'n/a' }} -->
+<!-- {{morePages | json}} -->
+
+<div *ngIf="selected">
+    {{morePages | json}}
+</div>
+
+<div>
+    <button (click)="add()">Add</button>
+</div>
+
+<h1>
+    {{getError$ | async}}
+    Number of Pages: {{pagesCount$ | async}}
+</h1>
+
+
+<div *ngIf="pages$ | async as pages">
+    <app-page-cont [pages]="pages" [title]="title" (selected)="select($event)"></app-page-cont>
+</div>
+
+<button (click)="btn()">button</button>
+<button (click)="edit()">edit</button>
+<button (click)="delete()">delete</button>
+
+<h1>
+    {{totalBytes}} loaded
+</h1>

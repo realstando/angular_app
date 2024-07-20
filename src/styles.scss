@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+// @import "bootstrap/dist/css/bootstrap.min.css";
+.table {
+    --bs-table-bg: transparent; // make the table background transparent
+    --bs-table-color: white; // move the font colro to the table, as both even and odd have white color
+}
+
+.even {
+    background-color: cornflowerblue !important;
+    color: white;
+}
+
+.odd {
+    background-color: darkolivegreen !important;
+    color: white;
+    font-weight: bold;
+}
+.table th {
+    color: black !important;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

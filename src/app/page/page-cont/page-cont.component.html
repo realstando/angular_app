@@ -1,0 +1,32 @@
+<h2>{{title}}</h2>
+<table class="table">
+    <tbody>
+        <tr>
+            <th>Index</th>
+            <th>E/O</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>Select</th>
+        </tr>
+        <tr [ngClass]="e? 'even' : 'odd'" *ngFor="let page of pages | slice: 0:10; let e=even; let o=odd; let i=index">
+            <td>{{i | percent}}</td>
+            <td>{{e ? 'Even' : 'Odd'}}</td>
+            <td>{{page.pageNum | currency}}</td>
+            <td>{{page.pageStr1 | lowercase}}</td>
+            <td>{{page.pageStr2 | uppercase}}</td>
+            <td>{{page.pageTime1 | date: 'short'}}</td>
+            <td>{{page.pageTime2 | date: 'dd/MMM/yyyy'}}</td>
+            <td>{{page.pageType}}</td>
+            <td>{{page.deci | number: '1.0-2'}}</td>
+            <td>
+                <!-- <button (click)="select(page)">Select</button> -->
+                 <button class="btn btn-primary" [routerLink]="['/page', page.pageNum]">Select Page</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
