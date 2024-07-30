@@ -1,7 +1,6 @@
 <form>
   <div class="form-group">
     <input
-      #email="ngModel"
       appValidator
       type="email"
       class="form-control"
@@ -9,7 +8,7 @@
       [(ngModel)]="email"
       placeholder="provide email"
     />
-    <div>{{email.errors | json}}</div>
+    <!-- <div>{{email.errors | json}}</div> -->
   </div>
   <div class="form-group">
     <input

@@ -15,7 +15,7 @@
 </div>
 
 <div>
-    <button (click)="add()">Add</button>
+    <button routerLink="add">Add</button>
 </div>
 
 <h1>
@@ -35,3 +35,5 @@
 <h1>
     {{totalBytes}} loaded
 </h1>
+
+<router-outlet></router-outlet>

@@ -8,6 +8,7 @@ import { PageMoreComponent } from './page-more/page-more.component';
 import { PageAddComponent } from './page-add/page-add.component';
 import { FormsModule } from '@angular/forms';
 import { HeaderModule } from '../header/header.module';
+import { RouteConfigToken } from '../services/routeConfig.service';
 
 @NgModule({
   declarations: [
@@ -17,5 +18,11 @@ import { HeaderModule } from '../header/header.module';
     PageAddComponent,
   ],
   imports: [CommonModule, PageRoutingModule, FormsModule, HeaderModule],
+  providers: [
+    {
+      provide: RouteConfigToken,
+      useValue: { title: 'Room' },
+    },
+  ]
 })
 export class PageModule {}

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ContentComponent } from './content/content.component';
 import { ContainerComponent } from './container/container.component';
 import { APP_CONFIG, APP_CONFIG_SERVICE } from './AppConfig/appconfig.service';
-import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withFetch } from '@angular/common/http';
 import { RequestInterceptor } from './request.interceptor';
 import { InitService } from './init.service';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -21,8 +21,9 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { HoverDirective } from './hover.directive';
 import { ValidatorDirective } from './validator/validator.directive';
-import { PageModule } from './page/page.module';
+// import { PageModule } from './page/page.module';
 import { HeaderModule } from './header/header.module';
+import { RouteConfigToken } from './services/routeConfig.service';
 
 function initFactory(InitService: InitService) {
   return ()=> InitService.init();
@@ -41,7 +42,7 @@ function initFactory(InitService: InitService) {
   ],
   imports: [
     BrowserModule,
-    PageModule,
+    // PageModule,
     AppRoutingModule,
     MatToolbarModule,
     MatButtonModule,
@@ -57,11 +58,15 @@ function initFactory(InitService: InitService) {
       provide: APP_CONFIG_SERVICE,
       useValue: APP_CONFIG
     },
+    {
+      provide: RouteConfigToken,
+      useValue: { title: 'HOME' },
+    },
     provideHttpClient(),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptor,
-      multi: true
+      multi: true, 
     },
     {
       provide: APP_INITIALIZER,
@@ -69,7 +74,7 @@ function initFactory(InitService: InitService) {
       deps: [InitService],
       multi: true
     },
-    provideAnimationsAsync()
+    provideAnimationsAsync(), 
   ],
   bootstrap: [AppComponent]
 })
